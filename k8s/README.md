@@ -1,5 +1,6 @@
 # k8s
 This has been tested against Kubernetes v1.29.4 with Cilium 1.15.4 (in kubeproxyless mode) and nfs-subdir-external-provisioner v4.0.18.
+** Note from Fork Author: Using local-storage instead of nfs.
 
 ### configmap.yaml
 Contains the serverDZ.cfg and BEServer_x64.cfg files.  You'll want to add your own configuration here.
