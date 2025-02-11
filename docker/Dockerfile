@@ -1,15 +1,11 @@
-FROM steamcmd/steamcmd:latest
+# Ubuntu noble can kiss my ass
+FROM steamcmd/steamcmd:ubuntu-jammy
 
 # install deps
 RUN useradd -m steam \
     && apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y apt-utils \
-    && apt-get install -y net-tools \
-    && apt-get install -y nano \
-    && apt-get install -y vim \
-    && apt-get install -y netcat-openbsd \
-    && apt-get install -y dnsutils \
     && apt-get install -y \
         lib32gcc-s1 \
         libcap-dev \
@@ -20,16 +16,13 @@ RUN useradd -m steam \
 
 USER steam
 
-ARG STEAMPASSWORD
-ARG MODS
-
 ENV USER=steam
 ENV HOME=/home/steam
 ENV GAME=dayz
 ENV APPID=223350
 ENV STEAMACCOUNT=anonymous
-ENV STEAMPASSWORD=${STEAMPASSWORD}
-ENV MODS=${MODS}
+ENV STEAMPASSWORD=
+ENV MODS=
 ENV CPUCOUNT=2
 ENV PORT=2302
 
@@ -39,7 +32,7 @@ WORKDIR /home/steam
 RUN mkdir ${HOME}/${GAME} && \
     mkdir ${HOME}/profile && \
     mkdir ${HOME}/battleye && \
-    chown -R steam:steam ${HOME}
+    chown -R steam ${HOME}
 
 # Exposed Ports
 # game
