@@ -62,6 +62,9 @@ spec:
               value: /home/steam
             - name: APPID
               value: "223350"
+            #   Uncomment to add mods #
+            #   - name: MODS
+            #     value: <Use ';' as a separater if adding multiple mods>
             - name: STEAMACCOUNT
               valueFrom:
                 secretKeyRef:
